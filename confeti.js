@@ -1,83 +1,126 @@
-// Confetis
+// ===============================
+// CONFETI FONDO
+// ===============================
 
-//
-// 1. Configuración Inicial
-window.oncontextmenu = function () {
-  return false;
-};
+const canvasConfeti = document.getElementById("canvas1");
+const ctxConfeti = canvasConfeti.getContext("2d");
 
-const canvasConfeti = document.getElementById("canvas1"); //Lienzo
-const ctxConfeti = canvasConfeti.getContext("2d"); // Funciones
+// Tamaño
+let ancho = canvasConfeti.width = window.innerWidth;
+let alto = canvasConfeti.height = window.innerHeight;
 
-let ancho = (canvasConfeti.width = window.innerWidth);
-let alto = (canvasConfeti.height = window.innerHeight);
-
+// Array confetis
 let confetis = [];
 
+// Colores
 const coloresConfeti = [
-  "rgba(255, 155, 170, 1)",
-  "rgba(224, 130, 144, 1)",
-  "rgba(251, 208, 214, 1)",
-  "rgba(248, 93, 116, 1)",
-  "rgba(246, 121, 139, 1)",
-  "rgba(238, 174, 184, 1)",
-  "rgba(255, 255, 255, 1)",
+  "#ff9baa",
+  "#e08290",
+  "#fbd0d6",
+  "#f85d74",
+  "#f6798b",
+  "#eeaeb8",
+  "#ffffff"
 ];
 
-//
-// 2. Crear Confeti
-//
+// ===============================
+// CREAR CONFETI
+// ===============================
+
 function crearConfeti() {
-  const cantidad = 100;
+
+  confetis = [];
+
+  const cantidad = window.innerWidth < 768 ? 60 : 120;
+
   for (let i = 0; i < cantidad; i++) {
+
     confetis.push({
-      x: Math.random() * ancho, // Posición Horizontal Aleatoria
-      y: Math.random() * -alto, // Posición Vertical Aleatoria (Desde arriba por el negativo)
-      r: Math.random() * 5 + 2, // Radio Aleatorio (2 y 7 Pixeles)
-      color: coloresConfeti[Math.floor(Math.random() * coloresConfeti.length)],
-      velocidadY: Math.random() * 2 + 1, // Velocidad Aleatoria (1 y 3 Pixeles/Frame)
+
+      x: Math.random() * ancho,
+      y: Math.random() * alto,
+
+      radio: Math.random() * 4 + 2,
+
+      color:
+        coloresConfeti[
+          Math.floor(Math.random() * coloresConfeti.length)
+        ],
+
+      velocidadY: Math.random() * 1.5 + 0.5,
+
+      velocidadX: Math.random() * 1 - 0.5
+
     });
+
   }
+
 }
 
-//
-// 3. Dibujar y Mover Confeti
-//
-function animarConfeti() {
-  ctxConfeti.fillStyle = "rgba(255, 182, 193, 1)"; // Fondo Rosa Pastel
-  ctxConfeti.fillRect(0, 0, ancho, alto);
+// ===============================
+// DIBUJAR
+// ===============================
 
-  for (let i = 0; i < confetis.length; i++) {
-    let confetiActual = confetis[i];
+function dibujarConfeti() {
 
-    ctxConfeti.beginPath(); // Empezamos Una Nueva Figura
+  // LIMPIAR canvas
+  ctxConfeti.clearRect(0, 0, ancho, alto);
+
+  confetis.forEach((confeti) => {
+
+    ctxConfeti.beginPath();
+
     ctxConfeti.arc(
-      confetiActual.x,
-      confetiActual.y,
-      confetiActual.r,
+      confeti.x,
+      confeti.y,
+      confeti.radio,
       0,
       Math.PI * 2
-    ); // Dibujamos Un Círculo
-    ctxConfeti.fillStyle = confetiActual.color; // Color
-    ctxConfeti.fill(); // Rellenamos El Círculo
+    );
 
-    // Movimiento (Caída Libre)
-    confetiActual.y += confetiActual.velocidadY;
+    ctxConfeti.fillStyle = confeti.color;
 
-    // Si Termina De Caer, Aparece Arriba Nuevamente
-    if (confetiActual.y > alto) {
-      confetiActual.y = -10;
-      confetiActual.x = Math.random() * ancho;
+    ctxConfeti.fill();
+
+    // Movimiento
+    confeti.y += confeti.velocidadY;
+    confeti.x += confeti.velocidadX;
+
+    // Reiniciar arriba
+    if (confeti.y > alto) {
+
+      confeti.y = -10;
+      confeti.x = Math.random() * ancho;
+
     }
-  }
 
-  // Animación Continua (Llama de nuevo a la función)
-  requestAnimationFrame(animarConfeti);
+    // Bordes
+    if (confeti.x > ancho) confeti.x = 0;
+    if (confeti.x < 0) confeti.x = ancho;
+
+  });
+
+  requestAnimationFrame(dibujarConfeti);
+
 }
+
+// ===============================
+// RESPONSIVE
+// ===============================
+
+window.addEventListener("resize", () => {
+
+  ancho = canvasConfeti.width = window.innerWidth;
+  alto = canvasConfeti.height = window.innerHeight;
+
+  crearConfeti();
+
+});
+
+// ===============================
+// INICIAR
+// ===============================
 
 crearConfeti();
 
-// Esperar 1 segundo antes de iniciar el confeti
-setTimeout(() => {
-  animarConfeti();
-}, 1500);
+dibujarConfeti();

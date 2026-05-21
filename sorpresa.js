@@ -2,72 +2,76 @@
 // ELEMENTOS
 // ===============================
 
-// Regalo
 const regalo = document.querySelector(".regalo");
 const regalos = document.querySelector(".regalos");
-const caja = document.querySelector(".caja");
 
-// Modales
 const modalCarta = document.getElementById("modalCarta");
 const modalGaleria = document.getElementById("modalGaleria");
 
-// Galería
 const cerrarGaleria = document.getElementById("cerrarGaleria");
 const btnGaleria = document.getElementById("btnGaleria");
 
-// Overlay
-const overlay = document.querySelector(".overlay");
+const overlay = document.getElementById("overlay");
 
-// Audios
 const soplido = document.getElementById("soplido");
 const cancion = document.getElementById("cancion");
 
-// Vela
-const llama = document.querySelector(".llama");
+const llama = document.getElementById("llama");
 
-// Pantalla inicio
 const btnComenzar = document.getElementById("btnComenzar");
 const pantallaInicio = document.getElementById("pantallaInicio");
 
-// Texto animado
 const textoAnimado = document.getElementById("textoAnimado");
 
 // ===============================
-// INICIAR SORPRESA
+// VARIABLES
 // ===============================
 
-btnComenzar.addEventListener("click", () => {
+let velaApagada = false;
 
-  // Oculta pantalla inicial
-  pantallaInicio.style.opacity = "0";
-  pantallaInicio.style.pointerEvents = "none";
+// ===============================
+// INICIAR EXPERIENCIA
+// ===============================
+
+function iniciarSorpresa() {
+
+  // Ocultar pantalla inicial
+  pantallaInicio.classList.add("oculto");
 
   setTimeout(() => {
+
     pantallaInicio.style.display = "none";
+
   }, 1000);
 
   // Música
-  cancion.volume = 0.5;
+  if (cancion) {
 
-  cancion.play().catch(() => {
-    console.log("Autoplay bloqueado");
-  });
+    cancion.volume = 0.5;
 
-});
+    cancion.play().catch(() => {
+      console.log("Autoplay bloqueado");
+    });
+
+  }
+
+}
+
+btnComenzar?.addEventListener("click", iniciarSorpresa);
 
 // ===============================
-// ABRIR CARTA
+// MODAL CARTA
 // ===============================
 
 function abrirCarta() {
 
-  modalCarta.classList.add("activo");
+  modalCarta?.classList.add("activo");
 
 }
 
-function cerrarCarta(e) {
+function cerrarCarta(event) {
 
-  if (e.target === modalCarta) {
+  if (event.target === modalCarta) {
 
     modalCarta.classList.remove("activo");
 
@@ -75,40 +79,44 @@ function cerrarCarta(e) {
 
 }
 
-// Click en regalo
-regalo.addEventListener("click", abrirCarta);
+// Solo tapa y caja
+regalo?.addEventListener("click", abrirCarta);
 
-regalos.addEventListener("click", abrirCarta);
+regalos?.addEventListener("click", abrirCarta);
 
-caja.addEventListener("click", abrirCarta);
-
-// Cerrar carta
-modalCarta.addEventListener("click", cerrarCarta);
+modalCarta?.addEventListener("click", cerrarCarta);
 
 // ===============================
-// GALERÍA
+// MODAL GALERÍA
 // ===============================
 
-// Abrir galería desde botón
-btnGaleria.addEventListener("click", () => {
+function abrirGaleria(event) {
 
-  modalGaleria.classList.add("activo");
+  // Evita abrir carta al tocar botón
+  event.stopPropagation();
 
-});
+  modalGaleria?.classList.add("activo");
 
-// Cerrar galería
-cerrarGaleria.addEventListener("click", () => {
+}
 
-  modalGaleria.classList.remove("activo");
+function cerrarModalGaleria() {
 
-});
+  modalGaleria?.classList.remove("activo");
 
-// Cerrar tocando afuera
-modalGaleria.addEventListener("click", (e) => {
+}
 
-  if (e.target === modalGaleria) {
+btnGaleria?.addEventListener("click", abrirGaleria);
 
-    modalGaleria.classList.remove("activo");
+cerrarGaleria?.addEventListener(
+  "click",
+  cerrarModalGaleria
+);
+
+modalGaleria?.addEventListener("click", (event) => {
+
+  if (event.target === modalGaleria) {
+
+    cerrarModalGaleria();
 
   }
 
@@ -118,28 +126,39 @@ modalGaleria.addEventListener("click", (e) => {
 // APAGAR VELA
 // ===============================
 
-llama.addEventListener("click", () => {
+function apagarVela() {
+
+  if (velaApagada) return;
+
+  velaApagada = true;
 
   // Sonido
-  soplido.currentTime = 0;
-  soplido.play();
+  if (soplido) {
 
-  // Desaparece llama
+    soplido.currentTime = 0;
+
+    soplido.play();
+
+  }
+
+  // Animación
   llama.style.animation = "apagar .5s forwards";
 
-  // Fondo oscuro
-  overlay.classList.add("activo");
+  // Oscurecer fondo
+  overlay?.classList.add("activo");
 
   setTimeout(() => {
 
-    overlay.classList.remove("activo");
+    overlay?.classList.remove("activo");
 
   }, 1000);
 
-});
+}
+
+llama?.addEventListener("click", apagarVela);
 
 // ===============================
-// FRASES BONITAS
+// FRASES
 // ===============================
 
 const frases = [
@@ -154,23 +173,26 @@ const frases = [
 
 ];
 
-let indice = 0;
+let indiceFrase = 0;
 
 function cambiarFrase() {
 
-  textoAnimado.style.opacity = 0;
+  if (!textoAnimado) return;
+
+  textoAnimado.style.opacity = "0";
 
   setTimeout(() => {
 
-    textoAnimado.textContent = frases[indice];
+    textoAnimado.textContent =
+      frases[indiceFrase];
 
-    textoAnimado.style.opacity = 1;
+    textoAnimado.style.opacity = "1";
 
-    indice++;
+    indiceFrase++;
 
-    if (indice >= frases.length) {
+    if (indiceFrase >= frases.length) {
 
-      indice = 0;
+      indiceFrase = 0;
 
     }
 
@@ -178,16 +200,49 @@ function cambiarFrase() {
 
 }
 
-// Iniciar
+// Inicial
 cambiarFrase();
 
-// Cambiar cada 4 segundos
+// Intervalo
 setInterval(cambiarFrase, 4000);
 
 // ===============================
-// EFECTO TACTIL EN CELULAR
+// TOUCH MOBILE
 // ===============================
 
-document.addEventListener("touchstart", () => {}, {
-  passive: true
+document.addEventListener(
+  "touchstart",
+  () => {},
+  { passive: true }
+);
+
+// ===============================
+// PREVENIR ZOOM DOBLE TAP IOS
+// ===============================
+
+let ultimoToque = 0;
+
+document.addEventListener("touchend", (event) => {
+
+  const ahora = Date.now();
+
+  if (ahora - ultimoToque <= 300) {
+
+    event.preventDefault();
+
+  }
+
+  ultimoToque = ahora;
+
+}, { passive: false });
+
+// ===============================
+// REAJUSTE RESPONSIVE
+// ===============================
+
+window.addEventListener("resize", () => {
+
+  document.body.style.height =
+    window.innerHeight + "px";
+
 });

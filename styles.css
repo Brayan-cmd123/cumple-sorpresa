@@ -84,7 +84,7 @@ body{
 }
 
 .pantalla-inicio h1{
-  font-size: 60px;
+  font-size: 55px;
   font-family: 'Pacifico', cursive;
 
   text-shadow:
@@ -142,8 +142,9 @@ body{
 
 #canvas1,
 #canvas2{
-  position: absolute;
-  inset: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
 
   width: 100%;
   height: 100%;
@@ -152,11 +153,11 @@ body{
 }
 
 #canvas1{
-  z-index: 0;
+  z-index: 1;
 }
 
 #canvas2{
-  z-index: 2;
+  z-index: 5;
 }
 
 /* =========================
@@ -167,12 +168,14 @@ body{
   position: relative;
 
   width: 100%;
-  height: 100%;
+  height: 100vh;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  overflow: hidden;
 
   z-index: 20;
 }
@@ -184,7 +187,7 @@ body{
 .happy-birthday{
   position: absolute;
 
-  top: 60px;
+  top: 55px;
   left: 50%;
 
   transform: translateX(-50%);
@@ -194,7 +197,10 @@ body{
 
   color: #ff4d6d;
 
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
+
+  padding: 0 20px;
 
   text-shadow:
     0 0 5px #fff,
@@ -448,6 +454,8 @@ body{
     fuego .15s infinite alternate;
 
   z-index: 999;
+
+  cursor: pointer;
 }
 
 /* =========================
@@ -456,7 +464,6 @@ body{
 
 .caja-wrapper{
   position: relative;
-  transform: scale(.9);
   z-index: 30;
 }
 
@@ -516,7 +523,7 @@ body{
     scale(1.05);
 }
 
-/* Caja */
+/* CAJA */
 
 .regalos{
   position: absolute;
@@ -578,7 +585,7 @@ body{
     techo 1.5s ease-in-out infinite;
 }
 
-/* Moño */
+/* MOÑO */
 
 .cinta-de-regalo{
   position: absolute;
@@ -747,6 +754,15 @@ body{
     aparecer .5s ease;
 }
 
+.carta{
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.carta p{
+  line-height: 1.7;
+}
+
 /* =========================
    GALERIA
 ========================= */
@@ -754,54 +770,31 @@ body{
 .imagenes-galeria{
   display: grid;
 
-  grid-template-columns:
-    repeat(auto-fit,minmax(90px,1fr));
+  grid-template-columns: repeat(2,1fr);
 
-  gap: 12px;
+  gap: 10px;
 
-  padding-top: 10px;
+  margin-top: 15px;
 }
 
 .imagenes-galeria img{
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 140px;
 
   object-fit: cover;
-  object-position: center;
 
-  border-radius: 16px;
-
-  cursor: pointer;
-
-  transition: .3s ease;
+  border-radius: 14px;
 
   border: 3px solid rgba(255,255,255,.7);
 
   box-shadow:
-    0 6px 15px rgba(0,0,0,.15);
+    0 4px 12px rgba(0,0,0,.18);
+
+  transition: transform .3s ease;
 }
 
 .imagenes-galeria img:hover{
-  transform:
-    scale(1.06)
-    rotate(1deg);
-}
-
-/* =========================
-   CORAZONES
-========================= */
-
-.corazones span{
-  position: fixed;
-
-  bottom: -50px;
-
-  font-size: 30px;
-
-  opacity: .7;
-
-  animation:
-    subir 10s linear infinite;
+  transform: scale(1.05);
 }
 
 /* =========================
@@ -940,22 +933,6 @@ body{
   }
 }
 
-@keyframes subir{
-  from{
-    transform: translateY(0);
-    opacity: 0;
-  }
-
-  10%{
-    opacity: .8;
-  }
-
-  to{
-    transform: translateY(-120vh);
-    opacity: 0;
-  }
-}
-
 @keyframes apagar{
   from{
     opacity: 1;
@@ -970,4 +947,79 @@ body{
       translateX(-50%)
       scale(0);
   }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px){
+
+  .happy-birthday{
+    font-size: 32px;
+    top: 40px;
+  }
+
+  .portaretrato-torta-caja{
+    gap: 10px;
+    transform: scale(.85);
+  }
+
+  .soporte{
+    width: 340px;
+  }
+
+  .frase-especial p{
+    font-size: 18px;
+    padding: 0 15px;
+  }
+
+  .tooltip-regalo{
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+
+  .pantalla-inicio h1{
+    font-size: 38px;
+    padding: 0 20px;
+  }
+
+  .pantalla-inicio p{
+    font-size: 18px;
+    padding: 0 20px;
+  }
+
+}
+
+@media (max-width: 480px){
+
+  .portaretrato-torta-caja{
+    transform: scale(.72);
+  }
+
+  .happy-birthday{
+    font-size: 26px;
+  }
+
+  .frase-especial{
+    bottom: 40px;
+  }
+
+  .frase-especial p{
+    font-size: 16px;
+  }
+
+  .contenido-galeria{
+    padding: 18px;
+  }
+
+  .imagenes-galeria img{
+    height: 120px;
+  }
+
+  #btnComenzar{
+    font-size: 18px;
+    padding: 15px 30px;
+  }
+
 }

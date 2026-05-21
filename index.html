@@ -2,23 +2,34 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8" />
+
+  <meta charset="UTF-8">
 
   <meta
     name="viewport"
-    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-  />
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <meta name="theme-color" content="#ff8fab">
-  <meta name="apple-mobile-web-app-capable" content="yes">
 
   <title>Feliz Cumpleaños 💖</title>
 
   <!-- FUENTES -->
   <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
     href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600&display=swap"
     rel="stylesheet"
-  />
+  >
 
   <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
@@ -27,11 +38,11 @@
 
 <body>
 
-  <!-- =========================
-       PANTALLA INICIO
-  ========================== -->
-
-  <div class="pantalla-inicio" id="pantallaInicio">
+  <!-- PANTALLA INICIAL -->
+  <section
+    class="pantalla-inicio"
+    id="pantallaInicio"
+  >
 
     <div class="decoracion decoracion1"></div>
     <div class="decoracion decoracion2"></div>
@@ -43,61 +54,50 @@
       Presiona el botón para comenzar ✨
     </p>
 
-    <button id="btnComenzar">
+    <button
+      id="btnComenzar"
+      type="button"
+    >
       Abrir Sorpresa 🎁
     </button>
 
-  </div>
+  </section>
 
-  <!-- =========================
-       CONFETI
-  ========================== -->
-
+  <!-- CONFETI -->
   <canvas id="canvas1"></canvas>
 
-  <!-- =========================
-       FRASES
-  ========================== -->
-
+  <!-- FRASES -->
   <div class="frase-especial">
     <p id="textoAnimado"></p>
   </div>
 
-  <!-- =========================
-       CONTENEDOR PRINCIPAL
-  ========================== -->
+  <!-- CONTENIDO -->
+  <main class="contenedor">
 
-  <div class="contenedor">
-
-    <!-- TEXTO -->
-    <div class="happy-birthday">
+    <h2 class="happy-birthday">
       Feliz Cumpleaños D 💖
-    </div>
+    </h2>
 
-    <!-- OBJETOS -->
-    <div class="portaretrato-torta-caja">
+    <section class="portaretrato-torta-caja">
 
-      <!-- =========================
-           PORTARRETRATO
-      ========================== -->
-
+      <!-- FOTO -->
       <div class="portaretrato">
 
         <div class="marco">
+
           <img
             src="recursos/cumpleañero.jpg"
-            alt="Foto"
+            alt="Foto especial"
+            loading="lazy"
           >
+
         </div>
 
         <div class="soporte-marco"></div>
 
       </div>
 
-      <!-- =========================
-           TORTA
-      ========================== -->
-
+      <!-- TORTA -->
       <div class="torta-cumpleaños">
 
         <div class="torta">
@@ -106,24 +106,31 @@
 
         <div class="vela"></div>
 
-        <div class="llama" id="llama"></div>
+        <div
+          class="llama"
+          id="llama"
+        ></div>
 
       </div>
 
-      <!-- =========================
-           REGALO
-      ========================== -->
-
+      <!-- REGALO -->
       <div class="caja-wrapper">
 
-        <div class="caja" id="abrirRegalo">
+        <div
+          class="caja"
+          id="abrirRegalo"
+        >
 
-          <!-- Tooltip -->
-          <button class="tooltip-regalo" id="btnGaleria">
+          <!-- BOTÓN GALERÍA -->
+          <button
+            class="tooltip-regalo"
+            id="btnGaleria"
+            type="button"
+          >
             💖 Ver recuerdos
-            </button>
-          
-          <!-- Moño -->
+          </button>
+
+          <!-- MOÑO -->
           <div class="cinta-de-regalo">
 
             <div class="cinta-de-regalo-izquierda"></div>
@@ -134,15 +141,15 @@
 
           </div>
 
-          <!-- Caja -->
+          <!-- CAJA -->
           <div class="regalos">
             <div class="regalo-sombra"></div>
           </div>
 
-          <!-- Tapa -->
+          <!-- TAPA -->
           <div class="regalo"></div>
 
-          <!-- Estrellas -->
+          <!-- ESTRELLAS -->
           <div class="icono-estrella estrella1"></div>
           <div class="icono-estrella estrella2"></div>
           <div class="icono-estrella estrella3"></div>
@@ -153,21 +160,18 @@
 
       </div>
 
-    </div>
+    </section>
 
-    <!-- =========================
-         MESA
-    ========================== -->
-
+    <!-- MESA -->
     <div class="soporte"></div>
 
-  </div>
+  </main>
 
-  <!-- =========================
-       MODAL CARTA
-  ========================== -->
-
-  <div class="modal-carta" id="modalCarta">
+  <!-- MODAL CARTA -->
+  <div
+    class="modal-carta"
+    id="modalCarta"
+  >
 
     <div class="carta">
 
@@ -188,26 +192,30 @@
 
   </div>
 
-  <!-- =========================
-       GALERÍA
-  ========================== -->
-
-  <div class="modal-galeria" id="modalGaleria">
+  <!-- GALERÍA -->
+  <div
+    class="modal-galeria"
+    id="modalGaleria"
+  >
 
     <div class="contenido-galeria">
 
-      <span class="cerrar-galeria" id="cerrarGaleria">
+      <button
+        class="cerrar-galeria"
+        id="cerrarGaleria"
+        type="button"
+      >
         ✖
-      </span>
+      </button>
 
       <h2>Nuestros Momentos ✨</h2>
 
       <div class="imagenes-galeria">
 
-        <img src="recursos/foto1.jpg" alt="">
-        <img src="recursos/foto2.jpg" alt="">
-        <img src="recursos/foto3.jpg" alt="">
-        <img src="recursos/foto4.jpg" alt="">
+        <img src="recursos/foto1.jpg" alt="Recuerdo 1" loading="lazy">
+        <img src="recursos/foto2.jpg" alt="Recuerdo 2" loading="lazy">
+        <img src="recursos/foto3.jpg" alt="Recuerdo 3" loading="lazy">
+        <img src="recursos/foto4.jpg" alt="Recuerdo 4" loading="lazy">
 
       </div>
 
@@ -215,16 +223,10 @@
 
   </div>
 
-  <!-- =========================
-       CONFETI DELANTE
-  ========================== -->
-
+  <!-- CONFETI DELANTE -->
   <canvas id="canvas2"></canvas>
 
-  <!-- =========================
-       AUDIOS
-  ========================== -->
-
+  <!-- AUDIOS -->
   <audio
     id="soplido"
     src="recursos/soplar1.mp3"
@@ -238,16 +240,13 @@
     loop
   ></audio>
 
-  <!-- =========================
-       OVERLAY
-  ========================== -->
+  <!-- OVERLAY -->
+  <div
+    class="overlay"
+    id="overlay"
+  ></div>
 
-  <div class="overlay" id="overlay"></div>
-
-  <!-- =========================
-       CORAZONES
-  ========================== -->
-
+  <!-- CORAZONES -->
   <div class="corazones">
 
     <span>💖</span>
@@ -257,14 +256,10 @@
 
   </div>
 
-  <!-- =========================
-       JAVASCRIPT
-  ========================== -->
-
+  <!-- JAVASCRIPT -->
   <script src="Confeti.js"></script>
   <script src="Confeti2.js"></script>
   <script src="Sorpresa.js"></script>
 
 </body>
-
 </html>

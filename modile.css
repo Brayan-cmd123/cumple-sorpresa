@@ -1,194 +1,357 @@
+/* =========================
+   MOBILE.CSS
+========================= */
+
 html,
-body {
-  overflow: hidden;
+body{
   width: 100%;
   height: 100%;
-}
-.contenedor {
-  transform: scale(0.9);
-  width: 100%;
+  overflow: hidden;
 }
 
+/* =========================
+   RESET MOBILE
+========================= */
 
-
-/*Evitamos el Resaltado Azul de los Moviles*/
-* {
+*{
   -webkit-tap-highlight-color: transparent;
-  outline: none;
-  user-select: none;         /* Evita seleccionar texto al tocar */
-  -webkit-user-select: none; /* Para Safari/iOS */
-  -moz-user-select: none;    /* Firefox */
-  -ms-user-select: none;     /* IE/Edge */
+
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-button:active,
-.regalo:active,
-.regalos:active,
-.llama:active {
-  transform: scale(0.95);
+/* =========================
+   CONTENEDOR
+========================= */
+
+.contenedor{
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  transform: scale(.92);
+
+  position: relative;
 }
 
-/* Mesa */
-.soporte {
-  width: 370px;
-  left: -6px;
-}
+/* =========================
+   TEXTO PRINCIPAL
+========================= */
 
-.soporte::before {
-  width: 100px;
-  height: 1000px;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 18px;
-}
+.happy-birthday{
 
-.soporte::after {
-  width: 95px;
-  height: 1000px;
-  left: 85px;
-}
-
-/*Mensaje*/
-.happy-birthday {
-  left: 50%;
-  transform: translateX(-50%);
   width: 100%;
 
   text-align: center;
 
+  left: 50%;
+  transform: translateX(-50%);
+
   font-size: 34px;
+
+  top: 50px;
+
+  padding: 0 15px;
+
+  line-height: 1.2;
 }
 
-/*Objetos de la mesa*/
-.portaretrato {
-  transform: scale(0.75);
-  left: 65px;
-  bottom: -12px;
+/* =========================
+   OBJETOS
+========================= */
+
+.portaretrato-torta-caja{
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  gap: 10px;
+
+  position: relative;
+
+  margin-top: 40px;
 }
 
-.torta {
-  transform: scale(0.75);
+/* =========================
+   PORTARRETRATO
+========================= */
+
+.portaretrato{
+  transform: scale(.72);
+
+  position: relative;
+
   left: 15px;
-  bottom: -20px;
-}
-.torta {
-  filter: drop-shadow(0 0 15px rgba(255,255,255,.3));
 }
 
-.caja {
-  transform: scale(0.75);
-  left: -65px;
-  bottom: -26px;
+/* =========================
+   TORTA
+========================= */
+
+.torta-cumpleaños{
+
+  transform: scale(.72);
+
+  position: relative;
 }
 
-.vela {
-  transform: scale(0.75);
-  bottom: 94px;
-  left: 145px;
+.torta{
+
+  filter:
+    drop-shadow(
+      0 0 15px rgba(255,255,255,.25)
+    );
 }
 
-.llama {
-  bottom: 160px;
-  left: 142px;
+/* =========================
+   VELA
+========================= */
+
+.vela{
+
+  transform: scale(.72);
+
+  position: absolute;
+
+  left: 50%;
+  top: 12px;
+
+  margin-left: -7px;
 }
 
-.carta {
+/* =========================
+   LLAMA
+========================= */
+
+.llama{
+
+  position: absolute;
+
+  left: 50%;
+  top: -18px;
+
+  margin-left: -10px;
+
+  transform-origin: center;
+}
+
+/* =========================
+   REGALO
+========================= */
+
+.caja-wrapper{
+
+  transform: scale(.72);
+
+  position: relative;
+
+  right: 15px;
+}
+
+.caja{
+  position: relative;
+}
+
+/* =========================
+   BOTON RECUERDOS
+========================= */
+
+.tooltip-regalo{
+
+  top: -48px;
+
+  font-size: 12px;
+
+  padding: 9px 14px;
+
+  white-space: nowrap;
+}
+
+/* =========================
+   MESA
+========================= */
+
+.soporte{
+
+  width: 340px;
+  height: 18px;
+
+  position: relative;
+
+  transform: translateY(20px);
+}
+
+.soporte::before{
+
+  width: 85px;
+
+  left: 50%;
+
+  transform: translateX(-50%);
+}
+
+.soporte::after{
+
+  width: 80px;
+
+  left: 48px;
+}
+
+/* =========================
+   FRASES
+========================= */
+
+.frase-especial{
+
+  bottom: 50px;
+
+  padding: 0 20px;
+}
+
+.frase-especial p{
+
+  font-size: 18px;
+
+  line-height: 1.4;
+}
+
+/* =========================
+   CARTA
+========================= */
+
+.carta{
+
   width: 92%;
   max-width: 360px;
 
-  padding: 22px;
-
   max-height: 75vh;
+
   overflow-y: auto;
 
-  border-radius: 25px;
-}
-.carta p {
-  font-size: 15px;
-  line-height: 1.7;
-}
-.carta::-webkit-scrollbar {
-  width: 6px;
+  padding: 22px;
+
+  border-radius: 24px;
 }
 
-.carta::-webkit-scrollbar-thumb {
+.carta h2{
+
+  font-size: 24px;
+}
+
+.carta p{
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+/* Scroll bonito */
+
+.carta::-webkit-scrollbar{
+  width: 5px;
+}
+
+.carta::-webkit-scrollbar-thumb{
+
   background: #ff8fab;
+
   border-radius: 10px;
 }
 
-/* Nuevo media query para pantallas más pequeñas */
-@media only screen and (max-width: 400px) {
+/* =========================
+   GALERÍA
+========================= */
 
-    .contenedor {
-  transform: scale(0.8);
-}
+.contenido-galeria{
 
-  .soporte {
-    width: 300px;
-  }
-
-  .soporte::after {
-    left: 45px;
-    top: 20px;
-  }
-
-  .happy-birthday {
-  font-size: 28px;
-}
-
-  .portaretrato {
-    transform: scale(0.65);
-    left: 92px;
-    bottom: -16px;
-  }
-
-  .torta {
-    transform: scale(0.63);
-    left: 17px;
-    bottom: -27px;
-  }
-
-  .caja {
-    transform: scale(0.65);
-    left: -100px;
-    bottom: -35px;
-  }
-
-  .vela {
-    transform: scale(0.65);
-    bottom: 74px;
-    left: 160px;
-  }
-
-  .llama {
-    bottom: 138px;
-    left: 157px;
-  }
-
-  .carta {
-    transform: scale(0.7);
-  }
-}
-
-/* GALERÍA RESPONSIVE */
-
-.contenido-galeria {
-
-  width: 95%;
-  padding: 18px;
+  width: 94%;
 
   max-height: 85vh;
 
   overflow-y: auto;
+
+  padding: 18px;
 }
 
-.imagenes-galeria {
+.imagenes-galeria{
+
+  display: grid;
 
   grid-template-columns:
     repeat(2,1fr);
+
+  gap: 10px;
 }
 
-.imagenes-galeria img {
+.imagenes-galeria img{
 
-  height: 140px;
+  width: 100%;
+  height: 120px;
+
+  object-fit: cover;
+
+  border-radius: 16px;
+}
+
+.cerrar-galeria{
+
+  top: 10px;
+  right: 14px;
+}
+
+/* =========================
+   BOTONES TOUCH
+========================= */
+
+button:active,
+.regalo:active,
+.regalos:active,
+.llama:active{
+
+  transform: scale(.95);
+}
+
+/* =========================
+   CELULARES PEQUEÑOS
+========================= */
+
+@media screen and (max-width: 400px){
+
+  .contenedor{
+    transform: scale(.82);
+  }
+
+  .happy-birthday{
+
+    font-size: 28px;
+
+    top: 40px;
+  }
+
+  .portaretrato{
+    left: 25px;
+  }
+
+  .caja-wrapper{
+    right: 25px;
+  }
+
+  .soporte{
+    width: 300px;
+  }
+
+  .imagenes-galeria img{
+    height: 100px;
+  }
+
+  .frase-especial p{
+    font-size: 16px;
+  }
+
 }
