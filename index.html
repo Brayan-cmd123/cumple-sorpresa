@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  />
+
+  <meta name="theme-color" content="#ff8fab">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <title>Feliz Cumpleaños 💖</title>
+
+  <!-- FUENTES -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+  <!-- =========================
+       PANTALLA INICIO
+  ========================== -->
+
+  <div class="pantalla-inicio" id="pantallaInicio">
+
+    <div class="decoracion decoracion1"></div>
+    <div class="decoracion decoracion2"></div>
+    <div class="decoracion decoracion3"></div>
+
+    <h1>Tengo una sorpresa para ti 💖</h1>
+
+    <p>
+      Presiona el botón para comenzar ✨
+    </p>
+
+    <button id="btnComenzar">
+      Abrir Sorpresa 🎁
+    </button>
+
+  </div>
+
+  <!-- =========================
+       CONFETI
+  ========================== -->
+
+  <canvas id="canvas1"></canvas>
+
+  <!-- =========================
+       FRASES
+  ========================== -->
+
+  <div class="frase-especial">
+    <p id="textoAnimado"></p>
+  </div>
+
+  <!-- =========================
+       CONTENEDOR PRINCIPAL
+  ========================== -->
+
+  <div class="contenedor">
+
+    <!-- TEXTO -->
+    <div class="happy-birthday">
+      Feliz Cumpleaños D 💖
+    </div>
+
+    <!-- OBJETOS -->
+    <div class="portaretrato-torta-caja">
+
+      <!-- =========================
+           PORTARRETRATO
+      ========================== -->
+
+      <div class="portaretrato">
+
+        <div class="marco">
+          <img
+            src="recursos/cumpleañero.jpg"
+            alt="Foto"
+          >
+        </div>
+
+        <div class="soporte-marco"></div>
+
+      </div>
+
+      <!-- =========================
+           TORTA
+      ========================== -->
+
+      <div class="torta-cumpleaños">
+
+        <div class="torta">
+          <div class="chocolate"></div>
+        </div>
+
+        <div class="vela"></div>
+
+        <div class="llama" id="llama"></div>
+
+      </div>
+
+      <!-- =========================
+           REGALO
+      ========================== -->
+
+      <div class="caja-wrapper">
+
+        <div class="caja" id="abrirRegalo">
+
+          <!-- Tooltip -->
+          <button class="tooltip-regalo" id="btnGaleria">
+            💖 Ver recuerdos
+            </button>
+          
+          <!-- Moño -->
+          <div class="cinta-de-regalo">
+
+            <div class="cinta-de-regalo-izquierda"></div>
+
+            <div class="cinta-de-regalo-derecha"></div>
+
+            <div class="cinta-de-regalo-centro"></div>
+
+          </div>
+
+          <!-- Caja -->
+          <div class="regalos">
+            <div class="regalo-sombra"></div>
+          </div>
+
+          <!-- Tapa -->
+          <div class="regalo"></div>
+
+          <!-- Estrellas -->
+          <div class="icono-estrella estrella1"></div>
+          <div class="icono-estrella estrella2"></div>
+          <div class="icono-estrella estrella3"></div>
+          <div class="icono-estrella estrella4"></div>
+          <div class="icono-estrella estrella5"></div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- =========================
+         MESA
+    ========================== -->
+
+    <div class="soporte"></div>
+
+  </div>
+
+  <!-- =========================
+       MODAL CARTA
+  ========================== -->
+
+  <div class="modal-carta" id="modalCarta">
+
+    <div class="carta">
+
+      <h2>Querida D 💕</h2>
+
+      <p>
+        Hoy es un día muy especial porque celebramos a una persona increíble: tú.
+        Gracias por cada risa, cada consejo y cada momento bonito.
+        Espero que este nuevo año de vida te traiga muchísima felicidad,
+        amor, salud y sueños cumplidos ✨
+      </p>
+
+      <p class="firma">
+        Con mucho cariño 💖
+      </p>
+
+    </div>
+
+  </div>
+
+  <!-- =========================
+       GALERÍA
+  ========================== -->
+
+  <div class="modal-galeria" id="modalGaleria">
+
+    <div class="contenido-galeria">
+
+      <span class="cerrar-galeria" id="cerrarGaleria">
+        ✖
+      </span>
+
+      <h2>Nuestros Momentos ✨</h2>
+
+      <div class="imagenes-galeria">
+
+        <img src="recursos/foto1.jpg" alt="">
+        <img src="recursos/foto2.jpg" alt="">
+        <img src="recursos/foto3.jpg" alt="">
+        <img src="recursos/foto4.jpg" alt="">
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- =========================
+       CONFETI DELANTE
+  ========================== -->
+
+  <canvas id="canvas2"></canvas>
+
+  <!-- =========================
+       AUDIOS
+  ========================== -->
+
+  <audio
+    id="soplido"
+    src="recursos/soplar1.mp3"
+    preload="auto"
+  ></audio>
+
+  <audio
+    id="cancion"
+    src="recursos/cancion.mp3"
+    preload="auto"
+    loop
+  ></audio>
+
+  <!-- =========================
+       OVERLAY
+  ========================== -->
+
+  <div class="overlay" id="overlay"></div>
+
+  <!-- =========================
+       CORAZONES
+  ========================== -->
+
+  <div class="corazones">
+
+    <span>💖</span>
+    <span>💕</span>
+    <span>💗</span>
+    <span>✨</span>
+
+  </div>
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script src="Confeti.js"></script>
+  <script src="Confeti2.js"></script>
+  <script src="Sorpresa.js"></script>
+
+</body>
+
+</html>

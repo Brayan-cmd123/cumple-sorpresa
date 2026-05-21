@@ -1,0 +1,194 @@
+html,
+body {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.contenedor {
+  transform: scale(0.9);
+  width: 100%;
+}
+
+
+
+/*Evitamos el Resaltado Azul de los Moviles*/
+* {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  user-select: none;         /* Evita seleccionar texto al tocar */
+  -webkit-user-select: none; /* Para Safari/iOS */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* IE/Edge */
+}
+
+button:active,
+.regalo:active,
+.regalos:active,
+.llama:active {
+  transform: scale(0.95);
+}
+
+/* Mesa */
+.soporte {
+  width: 370px;
+  left: -6px;
+}
+
+.soporte::before {
+  width: 100px;
+  height: 1000px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 18px;
+}
+
+.soporte::after {
+  width: 95px;
+  height: 1000px;
+  left: 85px;
+}
+
+/*Mensaje*/
+.happy-birthday {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+
+  text-align: center;
+
+  font-size: 34px;
+}
+
+/*Objetos de la mesa*/
+.portaretrato {
+  transform: scale(0.75);
+  left: 65px;
+  bottom: -12px;
+}
+
+.torta {
+  transform: scale(0.75);
+  left: 15px;
+  bottom: -20px;
+}
+.torta {
+  filter: drop-shadow(0 0 15px rgba(255,255,255,.3));
+}
+
+.caja {
+  transform: scale(0.75);
+  left: -65px;
+  bottom: -26px;
+}
+
+.vela {
+  transform: scale(0.75);
+  bottom: 94px;
+  left: 145px;
+}
+
+.llama {
+  bottom: 160px;
+  left: 142px;
+}
+
+.carta {
+  width: 92%;
+  max-width: 360px;
+
+  padding: 22px;
+
+  max-height: 75vh;
+  overflow-y: auto;
+
+  border-radius: 25px;
+}
+.carta p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+.carta::-webkit-scrollbar {
+  width: 6px;
+}
+
+.carta::-webkit-scrollbar-thumb {
+  background: #ff8fab;
+  border-radius: 10px;
+}
+
+/* Nuevo media query para pantallas más pequeñas */
+@media only screen and (max-width: 400px) {
+
+    .contenedor {
+  transform: scale(0.8);
+}
+
+  .soporte {
+    width: 300px;
+  }
+
+  .soporte::after {
+    left: 45px;
+    top: 20px;
+  }
+
+  .happy-birthday {
+  font-size: 28px;
+}
+
+  .portaretrato {
+    transform: scale(0.65);
+    left: 92px;
+    bottom: -16px;
+  }
+
+  .torta {
+    transform: scale(0.63);
+    left: 17px;
+    bottom: -27px;
+  }
+
+  .caja {
+    transform: scale(0.65);
+    left: -100px;
+    bottom: -35px;
+  }
+
+  .vela {
+    transform: scale(0.65);
+    bottom: 74px;
+    left: 160px;
+  }
+
+  .llama {
+    bottom: 138px;
+    left: 157px;
+  }
+
+  .carta {
+    transform: scale(0.7);
+  }
+}
+
+/* GALERÍA RESPONSIVE */
+
+.contenido-galeria {
+
+  width: 95%;
+  padding: 18px;
+
+  max-height: 85vh;
+
+  overflow-y: auto;
+}
+
+.imagenes-galeria {
+
+  grid-template-columns:
+    repeat(2,1fr);
+}
+
+.imagenes-galeria img {
+
+  height: 140px;
+}
