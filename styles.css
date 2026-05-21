@@ -3,24 +3,24 @@
 ========================= */
 
 *{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
 }
 
 html,
 body{
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  font-family: 'Poppins', sans-serif;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  font-family:'Poppins',sans-serif;
 }
 
 body{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 
   background:
     linear-gradient(
@@ -30,7 +30,30 @@ body{
       #ffd6e0 100%
     );
 
-  position: relative;
+  position:relative;
+}
+
+/* =========================
+   CANVAS CONFETI
+========================= */
+
+#canvas1,
+#canvas2{
+  position:fixed;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  pointer-events:none;
+}
+
+#canvas1{
+  z-index:1;
+}
+
+#canvas2{
+  z-index:5;
 }
 
 /* =========================
@@ -38,37 +61,33 @@ body{
 ========================= */
 
 .pantalla-inicio{
-  position: fixed;
-  inset: 0;
-
-  overflow: hidden;
+  position:fixed;
+  inset:0;
 
   background:
     radial-gradient(circle at top,#ffc2d1 0%,#ff8fab 100%);
 
-  z-index: 20000;
+  overflow:hidden;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 
-  text-align: center;
-  color: white;
+  text-align:center;
 
-  transition: opacity 1s ease;
-}
+  z-index:99999;
 
-.pantalla-inicio.oculto{
-  opacity: 0;
-  pointer-events: none;
+  color:white;
+
+  transition:opacity 1s ease;
 }
 
 .pantalla-inicio::before{
-  content: "";
+  content:"";
 
-  position: absolute;
-  inset: 0;
+  position:absolute;
+  inset:0;
 
   background:
     radial-gradient(
@@ -76,44 +95,58 @@ body{
       transparent 2px
     );
 
-  background-size: 40px 40px;
+  background-size:40px 40px;
 
-  opacity: .4;
+  opacity:.4;
 
-  animation: moverFondo 20s linear infinite;
+  animation:moverFondo 20s linear infinite;
 }
 
 .pantalla-inicio h1{
-  font-size: 55px;
-  font-family: 'Pacifico', cursive;
+  position:relative;
+
+  font-family:'Pacifico',cursive;
+
+  font-size:clamp(2.2rem,6vw,4.5rem);
+
+  padding:0 20px;
+
+  margin-bottom:20px;
+
+  z-index:2;
 
   text-shadow:
     0 5px 15px rgba(0,0,0,.2);
-
-  margin-bottom: 20px;
-
-  z-index: 2;
 }
 
 .pantalla-inicio p{
-  font-size: 22px;
-  margin-bottom: 30px;
-  z-index: 2;
+  position:relative;
+
+  font-size:clamp(1rem,3vw,1.5rem);
+
+  margin-bottom:30px;
+
+  padding:0 20px;
+
+  z-index:2;
 }
 
 #btnComenzar{
-  border: none;
+  position:relative;
 
-  padding: 18px 45px;
+  border:none;
 
-  border-radius: 60px;
+  padding:16px 40px;
 
-  font-size: 24px;
-  font-weight: bold;
+  border-radius:60px;
 
-  color: white;
+  font-size:clamp(1rem,3vw,1.5rem);
 
-  cursor: pointer;
+  font-weight:700;
+
+  color:white;
+
+  cursor:pointer;
 
   background:
     linear-gradient(
@@ -125,39 +158,15 @@ body{
   box-shadow:
     0 10px 25px rgba(255,77,109,.4);
 
-  transition: .3s;
+  transition:.3s;
 
-  z-index: 2;
+  z-index:2;
 }
 
 #btnComenzar:hover{
   transform:
-    scale(1.08)
-    translateY(-3px);
-}
-
-/* =========================
-   CONFETI
-========================= */
-
-#canvas1,
-#canvas2{
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 100%;
-
-  pointer-events: none;
-}
-
-#canvas1{
-  z-index: 1;
-}
-
-#canvas2{
-  z-index: 5;
+    scale(1.05)
+    translateY(-2px);
 }
 
 /* =========================
@@ -165,42 +174,44 @@ body{
 ========================= */
 
 .contenedor{
-  position: relative;
+  position:relative;
 
-  width: 100%;
-  height: 100vh;
+  width:100%;
+  height:100vh;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 
-  overflow: hidden;
+  overflow:hidden;
 
-  z-index: 20;
+  z-index:20;
 }
 
 /* =========================
-   TEXTO
+   TITULO
 ========================= */
 
 .happy-birthday{
-  position: absolute;
+  position:absolute;
 
-  top: 55px;
-  left: 50%;
+  top:40px;
+  left:50%;
 
-  transform: translateX(-50%);
+  transform:translateX(-50%);
 
-  font-family: 'Pacifico', cursive;
-  font-size: 48px;
+  width:100%;
 
-  color: #ff4d6d;
+  text-align:center;
 
-  white-space: normal;
-  text-align: center;
+  padding:0 20px;
 
-  padding: 0 20px;
+  font-family:'Pacifico',cursive;
+
+  font-size:clamp(2rem,5vw,4rem);
+
+  color:#ff4d6d;
 
   text-shadow:
     0 0 5px #fff,
@@ -210,7 +221,7 @@ body{
     flotar 2s ease-in-out infinite,
     brillo 1.5s infinite;
 
-  z-index: 100;
+  z-index:100;
 }
 
 /* =========================
@@ -218,17 +229,17 @@ body{
 ========================= */
 
 .portaretrato-torta-caja{
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
 
-  gap: 25px;
+  gap:20px;
 
-  position: relative;
+  position:relative;
 
-  transform: translateY(30px);
+  z-index:20;
 
-  z-index: 20;
+  transform-origin:center bottom;
 }
 
 /* =========================
@@ -236,25 +247,23 @@ body{
 ========================= */
 
 .portaretrato{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  z-index: 30;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
 .marco{
-  width: 80px;
-  height: 80px;
+  width:90px;
+  height:90px;
 
-  padding: 5px;
+  padding:5px;
 
-  border-radius: 14px;
+  border-radius:15px;
 
-  overflow: hidden;
+  overflow:hidden;
 
-  background: #bb7d4e;
-  border: 5px solid #8a5e3c;
+  background:#bb7d4e;
+  border:5px solid #8a5e3c;
 
   box-shadow:
     0 4px 10px rgba(0,0,0,.3);
@@ -264,20 +273,20 @@ body{
 }
 
 .marco img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 }
 
 .soporte-marco{
-  width: 50px;
-  height: 15px;
+  width:50px;
+  height:15px;
 
-  background: #8a5e3c;
+  background:#8a5e3c;
 
-  margin-top: -5px;
+  margin-top:-5px;
 
-  clip-path: polygon(
+  clip-path:polygon(
     0 0,
     100% 0,
     80% 100%,
@@ -290,69 +299,67 @@ body{
 ========================= */
 
 .torta-cumpleaños{
-  position: relative;
+  position:relative;
 
-  width: 274px;
-  height: 230px;
-
-  z-index: 30;
+  width:270px;
+  height:230px;
 }
 
 .torta{
-  position: absolute;
-  bottom: 0;
+  position:absolute;
+  bottom:0;
 
-  width: 274px;
-  height: 140px;
+  width:100%;
+  height:140px;
 
-  overflow: hidden;
+  overflow:hidden;
 
-  background: #FDE8C8;
+  border-radius:30px 30px 0 0;
 
-  border-radius: 30px 30px 0 0;
+  background:#FDE8C8;
 
   box-shadow:
     0 10px 25px rgba(0,0,0,.12);
 }
 
 .torta::before{
-  content: "";
+  content:"";
 
-  position: absolute;
+  position:absolute;
 
-  width: 100%;
-  height: 15px;
+  width:100%;
+  height:15px;
 
-  top: 75px;
+  top:75px;
 
-  background: #ff9393;
+  background:#ff9393;
 
   box-shadow:
     0 30px #ff9393;
 }
 
 .torta::after{
-  content: "";
+  content:"";
 
-  position: absolute;
+  position:absolute;
 
-  width: 100%;
-  height: 40px;
+  width:100%;
+  height:40px;
 
-  background: #ff5959;
+  background:#ff5959;
 }
 
 .chocolate{
-  position: absolute;
+  position:absolute;
 
-  width: 25px;
-  height: 45px;
+  width:25px;
+  height:45px;
 
-  top: 25px;
+  top:25px;
 
-  border-radius: 50px;
+  border-radius:50px;
 
-  background: #ff5959;
+  background:#ff5959;
 
   box-shadow:
     25px 2px #FDE8C8,
@@ -372,70 +379,66 @@ body{
 ========================= */
 
 .vela{
-  position: absolute;
+  position:absolute;
 
-  width: 15px;
-  height: 70px;
+  width:15px;
+  height:70px;
 
-  left: 50%;
-  top: 10px;
+  top:10px;
+  left:50%;
 
-  transform: translateX(-50%);
+  transform:translateX(-50%);
 
-  background: white;
+  background:white;
 
   box-shadow:
     inset 0 -10px #FF6F61;
 
-  z-index: 50;
+  z-index:50;
 }
 
 .vela::before{
-  content: "";
+  content:"";
 
-  position: absolute;
+  position:absolute;
 
-  width: 15px;
-  height: 15px;
+  width:15px;
+  height:15px;
 
-  top: 10px;
+  top:10px;
 
-  background: #FF6F61;
+  background:#FF6F61;
 
   box-shadow:
     0 25px #FF6F61;
 }
 
 .vela::after{
-  content: "";
+  content:"";
 
-  position: absolute;
+  position:absolute;
 
-  width: 2px;
-  height: 15px;
+  width:2px;
+  height:15px;
 
-  top: -15px;
-  left: 6px;
+  top:-15px;
+  left:6px;
 
-  background: black;
+  background:black;
 }
 
-/* =========================
-   LLAMA
-========================= */
-
 .llama{
-  position: absolute;
+  position:absolute;
 
-  top: -25px;
-  left: 50%;
+  top:-25px;
+  left:50%;
 
-  transform: translateX(-50%);
+  transform:translateX(-50%);
 
-  width: 22px;
-  height: 34px;
+  width:22px;
+  height:34px;
 
-  border-radius: 50%;
+  border-radius:50%;
 
   background:
     radial-gradient(
@@ -453,9 +456,9 @@ body{
   animation:
     fuego .15s infinite alternate;
 
-  z-index: 999;
+  z-index:999;
 
-  cursor: pointer;
+  cursor:pointer;
 }
 
 /* =========================
@@ -463,30 +466,25 @@ body{
 ========================= */
 
 .caja-wrapper{
-  position: relative;
-  z-index: 30;
+  position:relative;
 }
 
 .caja{
-  position: relative;
+  position:relative;
 
-  width: 150px;
-  height: 180px;
+  width:150px;
+  height:180px;
 }
 
-/* =========================
-   BOTON GALERIA
-========================= */
-
 .tooltip-regalo{
-  position: absolute;
+  position:absolute;
 
-  top: -60px;
-  left: 50%;
+  top:-60px;
+  left:50%;
 
-  transform: translateX(-50%);
+  transform:translateX(-50%);
 
-  border: none;
+  border:none;
 
   background:
     linear-gradient(
@@ -495,46 +493,38 @@ body{
       #ff8fab
     );
 
-  color: white;
+  color:white;
 
-  padding: 10px 18px;
+  padding:10px 18px;
 
-  border-radius: 40px;
+  border-radius:40px;
 
-  font-size: 14px;
-  font-weight: bold;
+  font-size:14px;
+  font-weight:700;
 
-  cursor: pointer;
+  cursor:pointer;
 
   box-shadow:
     0 8px 18px rgba(255,77,109,.35);
 
-  transition: .3s;
-
   animation:
     flotarTooltip 2s infinite;
 
-  z-index: 100;
+  z-index:100;
 }
-
-.tooltip-regalo:hover{
-  transform:
-    translateX(-50%)
-    scale(1.05);
-}
-
-/* CAJA */
 
 .regalos{
-  position: absolute;
+  position:absolute;
 
-  width: 125px;
-  height: 85px;
+  width:125px;
+  height:85px;
 
-  bottom: 0;
-  left: 12px;
+  left:12px;
+  bottom:0;
 
-  border-radius: 18px;
+  border-radius:18px;
+
+  cursor:pointer;
 
   background:
     linear-gradient(#ff4d6d,#ff4d6d)
@@ -549,22 +539,22 @@ body{
   box-shadow:
     0 10px 20px rgba(0,0,0,.15);
 
-  cursor: pointer;
-
   animation:
     base 1.5s ease-in-out infinite;
 }
 
 .regalo{
-  position: absolute;
+  position:absolute;
 
-  width: 138px;
-  height: 38px;
+  width:138px;
+  height:38px;
 
-  bottom: 78px;
-  left: 6px;
+  left:6px;
+  bottom:78px;
 
-  border-radius: 14px;
+  border-radius:14px;
+
+  cursor:pointer;
 
   background:
     linear-gradient(#ff4d6d,#ff4d6d)
@@ -579,8 +569,6 @@ body{
   box-shadow:
     0 6px 12px rgba(0,0,0,.12);
 
-  cursor: pointer;
-
   animation:
     techo 1.5s ease-in-out infinite;
 }
@@ -588,56 +576,53 @@ body{
 /* MOÑO */
 
 .cinta-de-regalo{
-  position: absolute;
+  position:absolute;
 
-  width: 40px;
-  height: 40px;
+  width:40px;
+  height:40px;
 
-  bottom: 102px;
-  left: 50%;
+  left:50%;
+  bottom:102px;
 
-  transform: translateX(-50%);
-
-  z-index: 10;
+  transform:translateX(-50%);
 }
 
 .cinta-de-regalo-centro{
-  position: absolute;
+  position:absolute;
 
-  width: 22px;
-  height: 22px;
+  width:22px;
+  height:22px;
 
-  background: #d62839;
+  top:9px;
+  left:9px;
 
-  border-radius: 50%;
+  border-radius:50%;
 
-  top: 9px;
-  left: 9px;
+  background:#d62839;
 
-  z-index: 5;
+  z-index:5;
 }
 
 .cinta-de-regalo-izquierda,
 .cinta-de-regalo-derecha{
-  position: absolute;
+  position:absolute;
 
-  width: 34px;
-  height: 34px;
+  width:34px;
+  height:34px;
 
-  border: 10px solid #ff4d6d;
+  border:10px solid #ff4d6d;
 
-  border-radius: 50% 50% 50% 0;
-
-  top: 0;
+  border-radius:50% 50% 50% 0;
 }
 
 .cinta-de-regalo-izquierda{
-  left: -18px;
-  transform: rotate(-35deg);
+  left:-18px;
+
+  transform:rotate(-35deg);
 }
 
 .cinta-de-regalo-derecha{
-  right: -18px;
+  right:-18px;
 
   transform:
     scaleX(-1)
@@ -649,32 +634,35 @@ body{
 ========================= */
 
 .soporte{
-  position: relative;
+  position:relative;
 
-  width: 500px;
-  height: 20px;
+  width:min(500px,90vw);
+  height:20px;
 
-  border-radius: 100px;
+  margin-top:40px;
 
-  background: #4A4A4A;
+  border-radius:100px;
 
-  transform: translateY(40px);
+  background:#4A4A4A;
 
-  z-index: 10;
+  z-index:10;
 }
 
 .soporte::before{
-  content: "";
+  content:"";
 
-  position: absolute;
+  position:absolute;
 
-  width: 100px;
-  height: 1000px;
+  width:100px;
+  height:1000px;
 
-  background: #4A4A4A;
+  left:50%;
 
-  left: 200px;
-  top: 18px;
+  transform:translateX(-50%);
+
+  top:18px;
+
+  background:#4A4A4A;
 }
 
 /* =========================
@@ -682,27 +670,29 @@ body{
 ========================= */
 
 .frase-especial{
-  position: absolute;
+  position:absolute;
 
-  bottom: 60px;
+  bottom:40px;
 
-  width: 100%;
+  width:100%;
 
-  text-align: center;
+  text-align:center;
 
-  z-index: 100;
+  padding:0 20px;
+
+  z-index:100;
 }
 
 .frase-especial p{
-  color: white;
+  color:white;
 
-  font-size: 22px;
-  font-weight: bold;
+  font-size:clamp(1rem,3vw,1.5rem);
+  font-weight:bold;
 
   text-shadow:
     0 0 10px rgba(0,0,0,.2);
 
-  transition: .4s;
+  transition:.4s;
 }
 
 /* =========================
@@ -711,37 +701,40 @@ body{
 
 .modal-carta,
 .modal-galeria{
-  position: fixed;
-  inset: 0;
+  position:fixed;
+  inset:0;
 
-  background: rgba(0,0,0,.85);
+  display:flex;
+  justify-content:center;
+  align-items:center;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background:rgba(0,0,0,.85);
 
-  z-index: 99999;
+  opacity:0;
+  pointer-events:none;
 
-  opacity: 0;
-  pointer-events: none;
+  transition:.4s;
 
-  transition: .4s;
+  z-index:99999;
 }
 
 .modal-carta.activo,
 .modal-galeria.activo{
-  opacity: 1;
-  pointer-events: auto;
+  opacity:1;
+  pointer-events:auto;
 }
 
 .carta,
 .contenido-galeria{
-  width: 90%;
-  max-width: 650px;
+  width:min(92%,650px);
 
-  padding: 30px;
+  max-height:85vh;
 
-  border-radius: 25px;
+  overflow-y:auto;
+
+  padding:25px;
+
+  border-radius:25px;
 
   background:
     linear-gradient(
@@ -754,13 +747,13 @@ body{
     aparecer .5s ease;
 }
 
-.carta{
-  max-height: 80vh;
-  overflow-y: auto;
+.carta h2,
+.contenido-galeria h2{
+  margin-bottom:15px;
 }
 
 .carta p{
-  line-height: 1.7;
+  line-height:1.7;
 }
 
 /* =========================
@@ -768,33 +761,45 @@ body{
 ========================= */
 
 .imagenes-galeria{
-  display: grid;
+  display:grid;
 
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns:
+    repeat(auto-fit,minmax(120px,1fr));
 
-  gap: 10px;
+  gap:12px;
 
-  margin-top: 15px;
+  margin-top:15px;
 }
 
 .imagenes-galeria img{
-  width: 100%;
-  height: 140px;
+  width:100%;
+  aspect-ratio:1/1;
 
-  object-fit: cover;
+  object-fit:cover;
 
-  border-radius: 14px;
+  border-radius:16px;
 
-  border: 3px solid rgba(255,255,255,.7);
+  border:3px solid rgba(255,255,255,.7);
 
   box-shadow:
-    0 4px 12px rgba(0,0,0,.18);
+    0 6px 15px rgba(0,0,0,.15);
 
-  transition: transform .3s ease;
+  transition:.3s ease;
 }
 
 .imagenes-galeria img:hover{
-  transform: scale(1.05);
+  transform:scale(1.05);
+}
+
+.cerrar-galeria{
+  position:absolute;
+
+  top:20px;
+  right:25px;
+
+  font-size:25px;
+
+  cursor:pointer;
 }
 
 /* =========================
@@ -802,21 +807,21 @@ body{
 ========================= */
 
 .overlay{
-  position: fixed;
-  inset: 0;
+  position:fixed;
+  inset:0;
 
-  background: black;
+  background:black;
 
-  opacity: 0;
-  pointer-events: none;
+  opacity:0;
+  pointer-events:none;
 
-  z-index: 9999;
+  transition:opacity 1s ease;
 
-  transition: opacity 1s ease;
+  z-index:9999;
 }
 
 .overlay.activo{
-  opacity: 1;
+  opacity:1;
 }
 
 /* =========================
@@ -825,11 +830,11 @@ body{
 
 @keyframes moverFondo{
   from{
-    transform: translateY(0);
+    transform:translateY(0);
   }
 
   to{
-    transform: translateY(40px);
+    transform:translateY(40px);
   }
 }
 
@@ -879,31 +884,31 @@ body{
 
 @keyframes base{
   0%,100%{
-    transform: scale(1);
+    transform:scale(1);
   }
 
   50%{
-    transform: scale(1.03);
+    transform:scale(1.03);
   }
 }
 
 @keyframes techo{
   0%,100%{
-    transform: translateY(0);
+    transform:translateY(0);
   }
 
   50%{
-    transform: translateY(-5px);
+    transform:translateY(-5px);
   }
 }
 
 @keyframes flotarMarco{
   0%,100%{
-    transform: translateY(0);
+    transform:translateY(0);
   }
 
   50%{
-    transform: translateY(-8px);
+    transform:translateY(-8px);
   }
 }
 
@@ -923,26 +928,28 @@ body{
 
 @keyframes aparecer{
   from{
-    opacity: 0;
-    transform: scale(.8);
+    opacity:0;
+    transform:scale(.8);
   }
 
   to{
-    opacity: 1;
-    transform: scale(1);
+    opacity:1;
+    transform:scale(1);
   }
 }
 
 @keyframes apagar{
   from{
-    opacity: 1;
+    opacity:1;
+
     transform:
       translateX(-50%)
       scale(1);
   }
 
   to{
-    opacity: 0;
+    opacity:0;
+
     transform:
       translateX(-50%)
       scale(0);
@@ -953,73 +960,68 @@ body{
    RESPONSIVE
 ========================= */
 
-@media (max-width: 768px){
-
-  .happy-birthday{
-    font-size: 32px;
-    top: 40px;
-  }
+@media (max-width:900px){
 
   .portaretrato-torta-caja{
-    gap: 10px;
-    transform: scale(.85);
-  }
-
-  .soporte{
-    width: 340px;
-  }
-
-  .frase-especial p{
-    font-size: 18px;
-    padding: 0 15px;
-  }
-
-  .tooltip-regalo{
-    font-size: 12px;
-    padding: 8px 14px;
-  }
-
-  .pantalla-inicio h1{
-    font-size: 38px;
-    padding: 0 20px;
-  }
-
-  .pantalla-inicio p{
-    font-size: 18px;
-    padding: 0 20px;
+    transform:scale(.85);
   }
 
 }
 
-@media (max-width: 480px){
+@media (max-width:768px){
 
   .portaretrato-torta-caja{
-    transform: scale(.72);
+    transform:scale(.72);
+    gap:10px;
   }
 
   .happy-birthday{
-    font-size: 26px;
+    top:30px;
+  }
+
+  .soporte{
+    width:350px;
+  }
+
+}
+
+@media (max-width:520px){
+
+  .portaretrato-torta-caja{
+    transform:scale(.58);
+  }
+
+  .happy-birthday{
+    font-size:2rem;
   }
 
   .frase-especial{
-    bottom: 40px;
+    bottom:25px;
   }
 
-  .frase-especial p{
-    font-size: 16px;
-  }
-
-  .contenido-galeria{
-    padding: 18px;
-  }
-
-  .imagenes-galeria img{
-    height: 120px;
+  .tooltip-regalo{
+    font-size:11px;
+    padding:8px 12px;
   }
 
   #btnComenzar{
-    font-size: 18px;
-    padding: 15px 30px;
+    padding:14px 30px;
+  }
+
+}
+
+@media (max-width:390px){
+
+  .portaretrato-torta-caja{
+    transform:scale(.5);
+  }
+
+  .happy-birthday{
+    font-size:1.7rem;
+  }
+
+  .soporte{
+    width:280px;
   }
 
 }
