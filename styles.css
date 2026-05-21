@@ -194,7 +194,7 @@ body{
 ========================= */
 
 .happy-birthday{
-  position:absolute;
+  position:relative;
 
   top:40px;
   left:50%;
